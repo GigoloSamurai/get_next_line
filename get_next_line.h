@@ -6,7 +6,7 @@
 /*   By: yasadki <yasadki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:57:03 by yasadki           #+#    #+#             */
-/*   Updated: 2024/02/29 12:03:50 by yasadki          ###   ########.fr       */
+/*   Updated: 2024/03/07 16:19:04 by yasadki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,9 @@
 
 void	*ft_calloc(size_t count, size_t size);
 char	*get_next_line(int fd);
+char	*ft_strjoin(char *line, char *buffer);
+size_t	ft_strlen(const char *str);
+void	*ft_memmove(void *dest, const void *src, size_t len);
+char	*ft_strchr(const char *str, int c);
 
 #endif

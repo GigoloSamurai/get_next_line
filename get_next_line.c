@@ -6,7 +6,7 @@
 /*   By: yasadki <yasadki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:10:20 by yasadki           #+#    #+#             */
-/*   Updated: 2024/03/07 16:52:52 by yasadki          ###   ########.fr       */
+/*   Updated: 2024/03/11 07:57:47 by yasadki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,26 @@ char	*ft_strchr(const char *str, int c)
 	return (0);
 }
 
-int	ft_check(int br, char **line)
+void	ft_update_line_and_buffer(char **line, char *buffer)
 {
-	if (br == -1 || !(*line) || (*line)[0] == '\0')
+	int		i;
+	int		len;
+	char	*tmp;
+
+	i = 0;
+	while ((*line)[i] && (*line)[i] != '\n')
+		i++;
+	len = ft_strlen(*line + i + 1);
+	ft_memmove(buffer, *line + i + 1, len);
+	buffer[len] = '\0';
+	if ((*line)[i] == '\n')
 	{
+		tmp = ft_substr(*line, 0, i + 1);
+		if (!tmp)
+			return ;
 		free(*line);
-		return (0);
+		*line = tmp;
 	}
-	return (1);
 }
 
 void	ft_read(int fd, char **line, char *buffer, int *br)
@@ -56,4 +68,34 @@ void	ft_read(int fd, char **line, char *buffer, int *br)
 		if (!*line)
 			return ;
 	}
+}
+
+int	ft_check(int br, char **line)
+{
+	if (br == -1 || !(*line) || (*line)[0] == '\0')
+	{
+		free(*line);
+		return (0);
+	}
+	return (1);
+}
+
+char	*get_next_line(int fd)
+{
+	static char		buffer[BUFFER_SIZE + 1];
+	char			*line;
+	int				br;
+
+	if (fd < 0 || BUFFER_SIZE <= 0)
+		return (NULL);
+	line = NULL;
+	if (buffer[0] != '\0')
+		line = ft_strjoin(NULL, buffer);
+	ft_read(fd, &line, buffer, &br);
+	if (!ft_check(br, &line))
+		return (NULL);
+	if (br <= 0)
+		return (line);
+	ft_update_line_and_buffer(&line, buffer);
+	return (line);
 }

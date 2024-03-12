@@ -6,7 +6,7 @@
 /*   By: yasadki <yasadki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:28:36 by yasadki           #+#    #+#             */
-/*   Updated: 2024/03/07 16:08:06 by yasadki          ###   ########.fr       */
+/*   Updated: 2024/03/11 07:53:52 by yasadki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,9 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*sub;
 	size_t	len_s;
-	
+
 	if (!s)
-		return (NULL)
+		return (NULL);
 	len_s = ft_strlen(s);
 	if (start >= len_s)
 		len = len_s - start;

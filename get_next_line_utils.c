@@ -6,7 +6,7 @@
 /*   By: yasadki <yasadki@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 11:28:36 by yasadki           #+#    #+#             */
-/*   Updated: 2024/03/11 07:53:52 by yasadki          ###   ########.fr       */
+/*   Updated: 2024/03/12 07:59:23 by yasadki          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 		{			
 			d[i] = s[i];
 			i++;
+			
+			
 		}
 	}
 	return (dest);
